@@ -303,10 +303,12 @@ extern "C" {
 
 #if defined(OPENSSL_ASM_INCOMPATIBLE)
 #undef OPENSSL_ASM_INCOMPATIBLE
+#endif  // OPENSSL_ASM_INCOMPATIBLE
+
+// Temporary test
 #if !defined(OPENSSL_NO_ASM)
 #define OPENSSL_NO_ASM
 #endif
-#endif  // OPENSSL_ASM_INCOMPATIBLE
 
 #if defined(__cplusplus)
 // enums can be predeclared, but only in C++ and only if given an explicit type.
