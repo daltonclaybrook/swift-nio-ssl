@@ -39,7 +39,9 @@ MANGLE_END */
     ],
     targets: [
         .target(name: "CNIOBoringSSL", cSettings: [
-            .define("OPENSSL_NO_ASM", .when(platforms: [.watchOS])),
+            .define("OPENSSL_NO_ASM", to: "1", .when(platforms: [.watchOS])),
+        ], cxxSettings: [
+            .define("OPENSSL_NO_ASM", to: "1", .when(platforms: [.watchOS])),
         ]),
         .target(name: "CNIOBoringSSLShims", dependencies: ["CNIOBoringSSL"]),
         .target(name: "NIOSSL",
