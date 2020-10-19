@@ -38,7 +38,9 @@ MANGLE_END */
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.15.0"),
     ],
     targets: [
-        .target(name: "CNIOBoringSSL"),
+        .target(name: "CNIOBoringSSL", cSettings: [
+            .define("OPENSSL_NO_ASM", .when(platforms: [.watchOS])),
+        ]),
         .target(name: "CNIOBoringSSLShims", dependencies: ["CNIOBoringSSL"]),
         .target(name: "NIOSSL",
                 dependencies: ["NIO", "NIOConcurrencyHelpers", "CNIOBoringSSL", "CNIOBoringSSLShims", "NIOTLS"]),
